@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const MyDiv = () => {
-  const [state] = useState('Hello World')
+const MyDiv = props => {
+  const [state] = useState(props.f ? 'Hello World' : 'Hola Mundo')
 
   return (
     <div>
@@ -48,6 +48,7 @@ const App = () => (
     <MyFragment />
     <MyFragment />
     <MyDiv />
+    <MyDiv f={true} />
   </>
 )
 
