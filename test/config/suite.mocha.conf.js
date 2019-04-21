@@ -10,21 +10,25 @@ exports.config = {
   capabilities: [
     {
       maxInstances: 5,
-      browserName: 'chrome',
+      browserName: 'firefox',
+      'moz:firefoxOptions': {
+        args: ['--headless'],
+      },
     },
 ],
   sync: true,
   logLevel: 'silent',
   deprecationWarnings: true,
   bail: 0,
-  baseUrl: 'http://www.phptravels.net',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
-  services: ['sauce'],
-  region: 'us',
-  user: process.env.SAUCE_USER,
-  key: process.env.SAUCE_KEY,
+  // services: ['sauce'],
+  // region: 'us',
+  // user: process.env.SAUCE_USER,
+  // key: process.env.SAUCE_KEY,
+  path: '/',
+  baseUrl: 'http://localhost',
   framework: 'mocha',
   mochaOpts: {
     ui: 'bdd',
@@ -35,12 +39,12 @@ exports.config = {
     'spec',
 ],
   onPrepare: function () {
-    console.log('**** let\'s go ****');
+    console.log(new Date(), '**** let\'s go ****');
   },
   beforeSession: function () {
     require('@babel/register');
   },
   onComplete: function() {
-    console.log('**** that\'s it ****');
+    console.log(new Date(), '**** that\'s it ****');
   }
 }
